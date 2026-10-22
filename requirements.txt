@@ -1,0 +1,2 @@
+PySide6>=6.6
+yt-dlp[default] @ https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
