@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytdlp-gui"
+dynamic = ["version"]
+description = "Cross-platform desktop GUI for yt-dlp (PySide6)"
+readme = "README.md"
+requires-python = ">=3.10"
+# Keep the yt-dlp line identical to requirements.txt (a test checks this).
+dependencies = [
+    "PySide6>=6.6",
+    "yt-dlp[default] @ https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz",
+]
+
+[project.gui-scripts]
+ytdlp-gui = "ytdlp_gui.__main__:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "ytdlp_gui.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["ytdlp_gui*"]
+
+[tool.setuptools.package-data]
+ytdlp_gui = ["assets/*.png", "assets/*.ico", "assets/icons/*.png"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
